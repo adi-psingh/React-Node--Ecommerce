@@ -14,12 +14,13 @@ export default function FetchItems() {
       const signal = controller.signal;
 
       dispatch(fetchStatusActions.setCurrentlyFetching());
-      fetch("http://localhost:8080/items", { signal })
+      fetch("http://98.94.13.150:8080/items", { signal })
         .then((res) => res.json())
+
         .then((data) => {
           dispatch(fetchStatusActions.setFetchDone());
           dispatch(fetchStatusActions.setFetchingFinished());
-          dispatch(itemsActions.addInitialItems(data.items[0]));
+          dispatch(itemsActions.addInitialItems(data.items));
         });
 
       return () => {

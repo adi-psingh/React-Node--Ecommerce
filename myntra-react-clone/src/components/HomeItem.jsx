@@ -12,9 +12,13 @@ export default function HomeItem({ item }) {
   return (
     <>
       <div className="item-container">
-        <img className="item-image" src={item.image} alt="item image" />
+        <img
+          className="item-image"
+          src={`http://98.94.13.150:8080/${item?.image}`}
+          alt="item image"
+        />{" "}
         <div className="rating">
-          {item.rating.stars} ⭐ | {item.rating.count}
+          {item?.rating?.stars ?? 0} ⭐ | {item?.rating?.count ?? 0}{" "}
         </div>
         <div className="company-name">{item.company}</div>
         <div className="item-name">{item.item_name}</div>
@@ -23,7 +27,6 @@ export default function HomeItem({ item }) {
           <span className="original-price">Rs {item.original_price}</span>
           <span className="discount">{item.discount_percentage}% OFF</span>
         </div>
-
         {bagData.includes(item.id) ? (
           <button
             onClick={() => {
